@@ -27,8 +27,9 @@ ctx = webrtc_streamer(key="example",
                 video_frame_callback=video_frame_callback,
                 rtc_configuration = RTC_CONFIGURATION,
                 mode=WebRtcMode.SENDRECV)
-
+st.echo('Pikachu')
 pikachu = st.progress(0)
+st.echo('Eevee')
 eevee = st.progress(0)
 
 
