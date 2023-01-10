@@ -42,8 +42,8 @@ while ctx.state.playing:
     img = (img / 127.5) - 1
     probabilities = model.predict(img)
     
-    pikachu_p = round(probabilities[0,0] * 100,2)
-    eevee_p = round(probabilities[0,1] * 100,2)
+    pikachu_p = round(probabilities[0,0] * 100,0)
+    eevee_p = round(probabilities[0,1] * 100,0)
     pikachu.progress(pikachu_p)
     eevee.progress(eevee_p)
 
