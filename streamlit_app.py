@@ -42,10 +42,8 @@ while ctx.state.playing:
     if probabilities[0,0] > 0.8:
         prob = round(probabilities[0,0] * 100,2)
         st.write(f"I'm {prob}% sure that's Pikachu!")
-        st.balloons()
     elif probabilities[0,1] > 0.8:
         prob = round(probabilities[0,1] * 100,2)
         st.write(f"I'm {prob}% pretty sure that's Eevee!")
-        st.balloons()
     else:
         st.write("I have no idea what this is")
