@@ -2,6 +2,9 @@ import streamlit as st
 import cv2
 import numpy as np
 from keras.models import load_model
+from streamlit_webrtc import webrtc_streamer
+
+webrtc_streamer(key="example")
 
 st.title('Is it Pikachu or Eevee!?')
 st.header('The image detection tool you definitely do not need in your life')
