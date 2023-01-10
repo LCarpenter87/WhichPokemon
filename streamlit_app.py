@@ -28,6 +28,9 @@ ctx = webrtc_streamer(key="example",
                 rtc_configuration = RTC_CONFIGURATION,
                 mode=WebRtcMode.SENDRECV)
 
+pikachu = st.progress(0)
+eevee = st.progress(0)
+
 
 while ctx.state.playing:
     with lock: 
@@ -38,12 +41,9 @@ while ctx.state.playing:
     img = np.asarray(img, dtype=np.float32).reshape(1, 224, 224, 3)
     img = (img / 127.5) - 1
     probabilities = model.predict(img)
+    
+    pikachu = round(probabilities[0,0] * 100,2)
+    eevee = round(probabilities[0,1] * 100,2)
+    pikachu.progress(pikachu)
+    eevee.progress(eevee)
 
-    if probabilities[0,0] > 0.8:
-        prob = round(probabilities[0,0] * 100,2)
-        st.write(f"I'm {prob}% sure that's Pikachu!")
-    elif probabilities[0,1] > 0.8:
-        prob = round(probabilities[0,1] * 100,2)
-        st.write(f"I'm {prob}% pretty sure that's Eevee!")
-    else:
-        st.write("I have no idea what this is")
