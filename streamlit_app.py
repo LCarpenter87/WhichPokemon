@@ -37,7 +37,7 @@ while ctx.state.playing:
     img = cv2.resize(img, (224, 224), interpolation=cv2.INTER_AREA)
     img = np.asarray(img, dtype=np.float32).reshape(1, 224, 224, 3)
     img = (img / 127.5) - 1
-    probabilities = model.predict(image)
+    probabilities = model.predict(img)
 
     if probabilities[0,0] > 0.8:
         prob = round(probabilities[0,0] * 100,2)
