@@ -21,7 +21,7 @@ def video_frame_callback(frame):
 
 
 st.title('Is it Pikachu or Eevee!?')
-st.header('The image detection tool you definitely do not need in your life')
+st.subheader('The image detection tool you definitely do not need in your life')
 
 ctx = webrtc_streamer(key="example", 
                 video_frame_callback=video_frame_callback,
