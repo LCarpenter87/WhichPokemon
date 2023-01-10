@@ -2,7 +2,7 @@ import streamlit as st
 import cv2
 import numpy as np
 from keras.models import load_model
-from streamlit_webrtc import webrtc_streamer, RTCConfiguration
+from streamlit_webrtc import webrtc_streamer, RTCConfiguration, WebRtcMode
 import av
 
 
