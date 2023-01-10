@@ -2,7 +2,7 @@ import streamlit as st
 import cv2
 import numpy as np
 from keras.models import load_model
-from streamlit_webrtc import webrtc_streamer
+from streamlit_webrtc import webrtc_streamer, RTCConfiguration
 import av
 
 
@@ -15,6 +15,9 @@ def video_frame_callback(frame):
 
     return av.VideoFrame.from_ndarray(flipped, format="bgr24")
 
+RTC_CONFIGURATION = RTCConfiguration(
+    {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+)
 
 webrtc_streamer(key="example", video_frame_callback=video_frame_callback)
 
