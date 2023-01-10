@@ -6,6 +6,10 @@ from streamlit_webrtc import webrtc_streamer, RTCConfiguration
 import av
 
 
+RTC_CONFIGURATION = RTCConfiguration(
+    {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+)
+
 flip = st.checkbox("Flip")
 
 def video_frame_callback(frame):
@@ -15,11 +19,11 @@ def video_frame_callback(frame):
 
     return av.VideoFrame.from_ndarray(flipped, format="bgr24")
 
-RTC_CONFIGURATION = RTCConfiguration(
-    {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
-)
 
-webrtc_streamer(key="example", video_frame_callback=video_frame_callback)
+webrtc_streamer(key="example", 
+                video_frame_callback=video_frame_callback,
+                rtc_configuration = RTC_CONFIGURATION,
+                mode=WebRtcMode.SENDRECV)
 
 
 #st.title('Is it Pikachu or Eevee!?')
